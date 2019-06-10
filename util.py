@@ -11,6 +11,8 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
+import numpy as np
+
 class Counter(dict):
     """
     A counter keeps track of counts for a set of keys.
@@ -209,7 +211,7 @@ class Counter(dict):
             addend[key] = -1 * y[key]
         return addend
 
-def get_weight(data_folder, file_name, threshold):
+def get_weight(data_folder, file_name):
     label_count = Counter()
 
     with open(data_folder+file_name, 'r') as labels:
@@ -218,12 +220,10 @@ def get_weight(data_folder, file_name, threshold):
 
     label_count.normalize()
     argmax = label_count.argMax()
-    threshold = 20  # maximum weight is 20
     for label in label_count:
-        cnt = 1 / (label_count[label] / label_count[argmax])
-        label_count[label] = cnt if cnt < threshold else threshold
+        label_count[label] = 1 / (label_count[label] / label_count[argmax])
 
     weight_list = []
     for label in label_count:
-        weight_list.append(label_count[label])
+        weight_list.append(np.log(np.exp(1) - 1 + label_count[label]))
     return weight_list
