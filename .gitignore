@@ -4,6 +4,9 @@ model/
 # data file
 data/
 
+# submission file
+submission/
+
 # vs code cache
 .vscode
 
