@@ -11,6 +11,7 @@ Adapt from gluonnlp tutorial at (https://gluon-nlp.mxnet.io/examples/sentiment_a
 ## Performance and potential improvement
 ### TextCNN
 - Achieve ~.17 f1 score w/o sufficient fine-tuning.
+
 May be improved through the following methods, and more:
 - From simple train, validation data separation (.9 and .1) to k-fold cross validation.
 - Add more convolution layer, or change the kernel size, channel number.
@@ -18,6 +19,7 @@ May be improved through the following methods, and more:
 Each epoch takes several minutes to ten minutes, and the VRAM consumption w.r.t. my hyperparameter setting is ~6.9G.
 ### Self attention sentence embedding
 - Achieve ~.14 f1 score w/o sufficient fine-tuning.
+
 May be improved through the following methods, and more:
 - Adjust hyperparameters, especially the number of bi-lstm layers and the number of attention hops. Since most posts are fairly short. A lot of them tend to overfit badly.
 - Find better weight vector for weighted softmax cross entropy loss. My current heuristic can be found in util.py.
