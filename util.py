@@ -211,7 +211,7 @@ class Counter(dict):
             addend[key] = -1 * y[key]
         return addend
 
-def get_weight(data_folder, file_name):
+def get_weight(data_folder, file_name, multiplier = 0.):
     label_count = Counter()
 
     with open(data_folder+file_name, 'r') as labels:
@@ -225,5 +225,5 @@ def get_weight(data_folder, file_name):
 
     weight_list = []
     for label in label_count:
-        weight_list.append(np.log(np.exp(1) - 1 + label_count[label]))
+        weight_list.append(1 + 3 * np.log(label_count[label]))
     return weight_list
