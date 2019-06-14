@@ -31,4 +31,4 @@ May be improved through the following methods, and more:
 - Find better weight vector for weighted softmax cross entropy loss. My current heuristic can be found in util.py.
   
 ### bert
-Might try in future.
+With mixed precision (fp16 and fp32), bert still can not fit into 8G VRAM.
